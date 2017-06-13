@@ -9,6 +9,8 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
+apply plugin: 'application'
+mainClassName = 'com.dasa.Application'
 
 apply plugin: 'war'
 apply plugin: 'idea'

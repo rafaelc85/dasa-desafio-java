@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dasa.domain.DadoPopulacional;
 import com.dasa.domain.EstatisticaAnoResponse;
 import com.dasa.service.DadosPopulacionaisService;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 public class SampleController {
@@ -16,7 +18,7 @@ public class SampleController {
 	@Autowired
 	DadosPopulacionaisService service;
 	
-	@RequestMapping("/hello")
+	@RequestMapping(path = "/hello")        
 	public String helloWorld(){
 		return "Hello =)";
 	}
@@ -25,9 +27,10 @@ public class SampleController {
 	public EstatisticaAnoResponse get2010data(){
 		
 		DadoPopulacional pop = service.obterPopulacaoPorAno(Optional.of("2010"));
-		EstatisticaAnoResponse stat = new EstatisticaAnoResponse(pop);
+		EstatisticaAnoResponse stat = new EstatisticaAnoResponse(pop);              
 		
-		return stat;
+		return stat;                
+                
 	}
 	
 }
