@@ -73,5 +73,7 @@ public class DadoPopulacional implements Serializable {
     public void setTotalMulheres(Long totalMulheres) {
         this.totalMulheres = totalMulheres;
     }
+    
+    
 
 }

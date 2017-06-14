@@ -16,14 +16,23 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.servlet.DispatcherServlet;
 
 @SpringBootApplication
-public class Application {
-
+@ComponentScan()
+@EnableAutoConfiguration
+public class Application extends SpringBootServletInitializer {
 
     @Autowired
     DadosPopulacionaisRepository dadosPopulacionaisRepository;
 
+    private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(Application.class);
+    
     @PostConstruct
     public void init() {
 
@@ -48,7 +57,9 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        ApplicationContext ctx = SpringApplication.run(Application.class, args);
+        DispatcherServlet dispatcherServlet = (DispatcherServlet)ctx.getBean("dispatcherServlet");
+        dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
     }
 
 
