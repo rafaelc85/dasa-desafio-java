@@ -3,7 +3,7 @@
 
 package com.dasa.domain;
 
-import com.dasa.util.Util;
+import com.dasa.utils.Util;
 import java.util.ArrayList;
 
 /**
@@ -115,13 +115,13 @@ public class ParticipacaoDados {
         this.participacaoList.add(new Participacao(Util.masculino, "Campanha2010-3", 2010));
         this.participacaoList.add(new Participacao(Util.feminino, "Campanha2011-1", 2011));
         this.participacaoList.add(new Participacao(Util.masculino, "Campanha2011-1", 2011));
-        this.participacaoList.add(new Participacao(Util.feminino, "Campanha2011-1", 2011));
-        this.participacaoList.add(new Participacao(Util.masculino, "Campanha2011-1", 2011));
         this.participacaoList.add(new Participacao(Util.feminino, "Campanha2011-2", 2011));
-        this.participacaoList.add(new Participacao(Util.feminino, "Campanha2011-2", 2011));
-        this.participacaoList.add(new Participacao(Util.masculino, "Campanha2011-3", 2011));
-        this.participacaoList.add(new Participacao(Util.masculino, "Campanha2011-3", 2011));
-        this.participacaoList.add(new Participacao(Util.feminino, "Campanha2012-1", 2012));
+        this.participacaoList.add(new Participacao(Util.masculino, "Campanha2012-1", 2012));
+        this.participacaoList.add(new Participacao(Util.feminino, "Campanha2013-2", 2013));
+        this.participacaoList.add(new Participacao(Util.feminino, "Campanha2014-1", 2014));
+        this.participacaoList.add(new Participacao(Util.masculino, "Campanha2015-1", 2015));
+        this.participacaoList.add(new Participacao(Util.masculino, "Campanha2016-1", 2016));
+        this.participacaoList.add(new Participacao(Util.feminino, "Campanha2016-2", 2016));
     }
     
 }

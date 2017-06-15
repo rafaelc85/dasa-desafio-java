@@ -1,7 +1,7 @@
 /*
  */
 
-package com.dasa.util;
+package com.dasa.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

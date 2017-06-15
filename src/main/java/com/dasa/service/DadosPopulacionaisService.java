@@ -11,5 +11,6 @@ public interface DadosPopulacionaisService {
 
     DadoPopulacional obterPopulacaoPorAno(final Optional<String>  ano);
     double calculaR(final Optional<String>  anoInicial, final Optional<String>  anoFinal);
+    DadoPopulacional get2017Data(DadoPopulacional pop, double r);
 
 }
