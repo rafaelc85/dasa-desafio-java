@@ -56,14 +56,24 @@ public class DadosPopulacionaisServiceimpl implements DadosPopulacionaisService 
                     MathContext.UNLIMITED);
             populacaoTotal = populacaoTotal.setScale(0, RoundingMode.HALF_UP);
 
-             //Aplicando fator de redução anual médio da população masculina
-            BigDecimal totalHomens = populacaoTotal.multiply(
-                    new BigDecimal("0.4934"), MathContext.UNLIMITED);
+            /*  Aplicando a seguinte formula para cálculo da populacao masculina:            
+            *   numeroDeHomens = numero de homens no ano anterior * r * k 
+            *   onde k é o fator de redução anual médio da população masculina
+            *   e r é a taxa de crescimento da população brasileira (conforme enunciado)
+            */  
+            BigDecimal totalHomens = new BigDecimal(pop.getTotalHomens());
+            totalHomens = totalHomens.multiply(
+                    new BigDecimal("0.9996"), MathContext.UNLIMITED);
+            totalHomens = totalHomens.multiply(
+                    new BigDecimal(r), MathContext.UNLIMITED);
             totalHomens = totalHomens.setScale(0, RoundingMode.HALF_UP);
+            
+            //a populacao é feminina é a populacao total menos o número de homens
             BigDecimal totalMulheres = populacaoTotal.subtract(totalHomens);
             
             return new DadoPopulacional("2017", populacaoTotal.toPlainString(), 
-                        totalHomens.toPlainString(), totalMulheres.toPlainString());
+                        totalHomens.toPlainString(), totalMulheres.toPlainString());            
+            
     }
 
     @Override
