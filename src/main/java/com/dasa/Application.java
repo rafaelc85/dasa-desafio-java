@@ -52,7 +52,6 @@ public class Application extends SpringBootServletInitializer {
         } catch (IOException e) {
             throw new UncheckedIOException("Erro ao popular a Base de Dados", e);
         }
-        
 
     }
 

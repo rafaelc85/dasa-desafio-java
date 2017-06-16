@@ -8,10 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dasa.domain.DadoPopulacional;
 import com.dasa.domain.EstatisticaAnoResponse;
-import com.dasa.domain.ParticipacaoDados;
+import com.dasa.domain.Participacao;
 import com.dasa.service.DadosPopulacionaisService;
+import com.dasa.utils.Util;
+import javax.validation.Valid;
 import org.springframework.boot.autoconfigure.web.ErrorController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class SampleController implements ErrorController{
@@ -54,13 +60,25 @@ public class SampleController implements ErrorController{
 	
         @RequestMapping("/participacao/{ano}")
 	public String getParticipacaoPorAno(@PathVariable int ano){	
-            ParticipacaoDados pd = new ParticipacaoDados();
-            return pd.getParticipacaoPorAno(ano);
+            return service.getParticipacaoPorAno(ano);
 	}
         
         @RequestMapping("/proporcao/{ano}")
 	public String getProporcaoPorAno(@PathVariable int ano){	
-            ParticipacaoDados pd = new ParticipacaoDados();
-            return pd.getProporcaoPorAno(ano);
+            return service.getProporcaoPorAno(ano);
 	}
+        
+        @RequestMapping(value="/notifica", method = RequestMethod.POST)
+	public String notificaParticipacao(@RequestParam("sexo") String sexo, 
+                @RequestParam("campanha") String campanha, @RequestParam("ano") int ano){
+            
+            sexo = sexo.toUpperCase();
+            if(String.valueOf(sexo.charAt(0)).equals("M"))
+                sexo = Util.masculino;
+            if(String.valueOf(sexo.charAt(0)).equals("F"))
+                sexo = Util.feminino;
+            Participacao participacao = new Participacao(sexo, campanha, ano);
+            service.getParticipacaoDadosList().add(participacao);
+            return "Dados adicionados com sucesso";
+	}		
 }
