@@ -5,7 +5,6 @@ import com.dasa.repository.DadosPopulacionaisRepository;
 import com.dasa.utils.DatasetReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -16,8 +15,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -26,12 +25,10 @@ import org.springframework.web.servlet.DispatcherServlet;
 @SpringBootApplication
 @ComponentScan()
 @EnableAutoConfiguration
-public class Application extends SpringBootServletInitializer {
+public class Application extends SpringBootServletInitializer{
 
     @Autowired
     DadosPopulacionaisRepository dadosPopulacionaisRepository;
-
-    private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(Application.class);
     
     @PostConstruct
     public void init() {
@@ -60,6 +57,5 @@ public class Application extends SpringBootServletInitializer {
         DispatcherServlet dispatcherServlet = (DispatcherServlet)ctx.getBean("dispatcherServlet");
         dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
     }
-
 
 }

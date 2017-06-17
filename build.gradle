@@ -4,9 +4,12 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "mysql:mysql-connector-java:5.1.37"
     }
 }
 apply plugin: 'application'
@@ -34,6 +37,8 @@ repositories {
     mavenCentral()
     mavenLocal()
     maven { url 'http://repo.springsource.org/libs-snapshot' }
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
 }
 
 dependencies {
@@ -43,11 +48,15 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     runtime('org.springframework.boot:spring-boot-devtools')
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
-
-    runtime('com.h2database:h2')
+    providedRuntime ('org.apache.tomcat.embed:tomcat-embed-jasper')
+    providedRuntime('javax.servlet:jstl')
+    //runtime('com.h2database:h2')
+    
+    runtime "mysql:mysql-connector-java:5.1.37"
 
     compileOnly('org.projectlombok:lombok')
     testCompileOnly('org.projectlombok:lombok')
+
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

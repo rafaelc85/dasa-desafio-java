@@ -4,6 +4,7 @@ import com.dasa.domain.DadoPopulacional;
 import com.dasa.domain.Participacao;
 import com.dasa.domain.ProporcaoParticipacao;
 import java.util.ArrayList;
+import java.util.List;
 
 import java.util.Optional;
 
@@ -14,11 +15,5 @@ public interface DadosPopulacionaisService {
     DadoPopulacional obterPopulacaoPorAno(final Optional<String>  ano);
     double calculaR(final Optional<String>  anoInicial, final Optional<String>  anoFinal);
     DadoPopulacional get2017Data(DadoPopulacional pop, double r);
-    
-    ArrayList<Participacao> getParticipacaoDadosList();
-    ArrayList<Participacao> filtraPorAno(int ano);
-    String getParticipacaoPorAno(int ano);
-    String getProporcaoPorAno(int ano);
-    ArrayList<ProporcaoParticipacao> createArrayProporcao(ArrayList<Participacao> filterList);
-
+  
 }
